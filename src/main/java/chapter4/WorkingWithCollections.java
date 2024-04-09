@@ -13,6 +13,41 @@ import java.util.TreeSet;
 
 public class WorkingWithCollections {
 
+    // Rooms for heroes
+    record Room(String name, String description, List<String> exits) {
+        public String getExists() {
+            StringBuilder exitDesc = new StringBuilder();
+
+            if (exits.isEmpty()){
+                exitDesc.append("There are no obvious exits.");
+            } else if (exits.size() == 1) {
+                exitDesc.append("There is an exit to the ");
+                exitDesc.append(exits.get(0));
+            } else if (exits.size() == 2) {
+                exitDesc.append("There are exits to the ");
+                exitDesc.append(exits.get(0));
+                exitDesc.append(" and ");
+                exitDesc.append(exits.get(1));
+            } else {
+                exitDesc.append("There are exits to the ");
+
+                boolean first = true;
+
+                for (String exit : exits) {
+                    if (!first) {
+                        exitDesc.append(", ");
+                    } else {
+                        first = false;
+                    }
+
+                    exitDesc.append(exit);
+                }
+            }
+            exitDesc.append(".");
+            return exitDesc.toString();
+        }
+    }
+
     public static void main(String[] args){
         String[] heroes = {"Byorki", "K'lar", "Tyrenni", "Athena", "Jarrod"};
         List<String> monsterList = new ArrayList<>();
@@ -98,40 +133,5 @@ public class WorkingWithCollections {
         }
 
         System.out.println();
-    }
-
-    // Rooms for heroes
-    record Room(String name, String description, List<String> exits) {
-        public String getExists() {
-            StringBuilder exitDesc = new StringBuilder();
-
-            if (exits.isEmpty()){
-                exitDesc.append("There are no obvious exits.");
-            } else if (exits.size() == 1) {
-                exitDesc.append("There is an exit to the ");
-                exitDesc.append(exits.get(0));
-            } else if (exits.size() == 2) {
-                exitDesc.append("There are exits to the ");
-                exitDesc.append(exits.get(0));
-                exitDesc.append(" and ");
-                exitDesc.append(exits.get(1));
-            } else {
-                exitDesc.append("There are exits to the ");
-
-                boolean first = true;
-
-                for (String exit : exits) {
-                    if (!first) {
-                        exitDesc.append(", ");
-                    } else {
-                        first = false;
-                    }
-
-                    exitDesc.append(exit);
-                }
-            }
-            exitDesc.append(".");
-            return exitDesc.toString();
-        }
     }
 }
