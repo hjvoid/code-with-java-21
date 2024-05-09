@@ -39,5 +39,22 @@ public class DataStructuresExamples {
         System.out.println(stack.pop().getName() + " was popped from the stack.");
 
         stack.push(starWars);
+
+        System.out.println("Queue example:");
+
+        Queue queue = new Queue();
+
+        queue.enqueue(starWars);
+        queue.enqueue(bladeRunner);
+        queue.enqueue(empireStrikesBack);
+        queue.enqueue(patriotGames);
+        queue.enqueue(bladeRunner2049);
+
+        System.out.println(queue);
+
+        System.out.println(queue.dequeue().getName() + " was dequeued from the queue.");
+        System.out.println(queue.dequeue().getName() + " was dequeued from the queue.");
+
+        System.out.println(queue);
     }
 }
